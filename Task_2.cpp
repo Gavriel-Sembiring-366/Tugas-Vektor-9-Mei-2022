@@ -1,5 +1,3 @@
-// maaf ga sempat buat comment bang :)
-// semoga bisa dimengerti bang
 
 #include <iostream>
 #include <vector>
