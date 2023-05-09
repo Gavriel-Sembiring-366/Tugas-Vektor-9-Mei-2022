@@ -1,49 +1,43 @@
-// maaf ga sempat buat comment bang :)
-// semoga bisa dimengerti bang
-
 #include <iostream>
 #include <vector>
-
 using namespace std;
 
-int freq, bil;
-
-void frek(vector<int> angka)
+void hapus_impost(vector<int> &array)
 {
-    for (int i = 0; i < angka.size(); i++)
+    for (int i = 0; i < array.size(); i++)
     {
-        if (angka[i] == bil)
+        for (int j = i + 1; j < array.size(); j++)
         {
-            freq++;
+            if (array[i] == array[j])
+            {
+                array.erase(array.begin() + j);
+                j--;
+            }
         }
     }
 
-    if (freq > 0)
+    cout << "Setelah : ";
+    for (int i = 0; i < array.size(); i++)
     {
-        cout << "Frekuensi dari angka " << bil << " di dalam array adalah " << freq << endl;
-    }
-    else
-    {
-        cout << "Angka tidak ditemukan\n";
+        if (i == array.size() - 1)
+            cout << array[i];
+        else
+            cout << array[i] << ", ";
     }
 }
 
-int main(void)
+int main()
 {
-    int temp, size;
-    vector<int> angka;
-    cout << "Masukkan ukuran vector: ";
-    cin >> size;
+    int jlh, angka;
+    vector<int> array;
+    cout << "Jumlah angka yang akan di-input: ";
+    cin >> jlh;
 
-    for (int i = 1; i <= size; i++)
+    for (int i = 1; i <= jlh; i++)
     {
-        cout << "Masukkan angka ke-" << i << ": ";
-        cin >> temp;
-        angka.push_back(temp);
+        cout << "Angka ke-" << i << " = ";
+        cin >> angka;
+        array.push_back(angka);
     }
-
-    cout << "Masukkan angka yang mau dicari frekuensinya: ";
-    cin >> bil;
-
-    frek(angka);
+    hapus_impost(array);
 }
